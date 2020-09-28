@@ -20,6 +20,7 @@ function animateBalloon(elem) {
 	function frame() {
 		if(pos >=(windowHeight + 200)){						// condition for function will stop at top
 			clearInterval(interval);
+			deleteBalloon(elem);
 		}
 		else{
 			pos++;
@@ -27,4 +28,8 @@ function animateBalloon(elem) {
 		}
 	}
 
+}
+
+function deleteBalloon(elem){
+	elem.remove();
 }
