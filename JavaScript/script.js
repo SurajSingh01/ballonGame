@@ -7,6 +7,7 @@ let scores = document.querySelectorAll('.score');
 let numberOfBalloonPop = 0;
 let totalBalloonToBePoped = 100;
 let currentBalloon = 0;
+let gameOver =false;
 function createBalloon() {
 	let div = document.createElement('div');
 	let rand = Math.floor(Math.random() * colors.length);    //Random variable for color picking
@@ -26,7 +27,8 @@ function animateBalloon(elem) {
 	function frame() {
 		if(pos >=(windowHeight + 200)){						// condition for function will stop at top
 			clearInterval(interval);
-			deleteBalloon(elem);
+			gameOver=true;
+			//deleteBalloon(elem);
 		}
 		else{
 			pos++;
@@ -50,7 +52,16 @@ function updateScore() {
 		scores[i].textContent = numberOfBalloonPop;
 	}
 }
-
+ /* To amimate the creation of ballon */
+ function startGame(){
+ let loop = setInterval(function(){
+ 		if(!gameOver && numberOfBalloonPop !== totalBalloonToBePoped) {
+ 			createBalloon();
+ 		} else if(num !== totalBalloonToBePoped){
+ 			clearInterval(loop)
+ 		}
+ 	} , 800);
+ }
 
 /*let balloons =document.querySelectorAll('.balloon');						/*this code is not working because event listener will not work for prdefined object on webpage.
 
