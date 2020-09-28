@@ -3,6 +3,9 @@ let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let heightOfBalloon = 200;
 let widthOfBalloon = 100;
+let scores = document.querySelectorAll('.score');
+let numberOfBalloonPop = 0;
+let totalBalloonToBePoped = 100;
 function createBalloon() {
 	let div = document.createElement('div');
 	let rand = Math.floor(Math.random() * colors.length);    //Random variable for color picking
@@ -32,7 +35,17 @@ function animateBalloon(elem) {
 
 function deleteBalloon(elem){
 	elem.remove();
+	numberOfBalloonPop++;
+	updateScore();
 }
+
+/*To ccalculate the score */
+function updateScore() {
+	for (let i=0; i< scores.length; i++){
+		scores[i].textContent = numberOfBalloonPop;
+	}
+}
+
 
 /*let balloons =document.querySelectorAll('.balloon');						/*this code is not working because event listener will not work for prdefined object on webpage.
 
@@ -41,7 +54,7 @@ for (let i=0; i< balloons.length; i++) {									to overcome this , using event 
 		deleteBalloon(balloons[i])
 	})
 }*/ 
- /*Event deligation */
+ /*Event deligation  for popup*/
  document.addEventListener('click',function(event){
  	if(event.target.classList.contains('balloon')){
  		deleteBalloon(event.target);
