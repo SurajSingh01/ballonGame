@@ -5,9 +5,13 @@ let heightOfBalloon = 200;
 let widthOfBalloon = 100;
 let scores = document.querySelectorAll('.score');
 let numberOfBalloonPop = 0;
-let totalBalloonToBePoped = 100;
+let totalBalloonToBePoped = 10;
 let currentBalloon = 0;
 let gameOver =false;
+let totalShadow = document.querySelector('.total-shadow');
+let winner = document.querySelector('.win');
+let looser = document.querySelector('.lose');
+
 function createBalloon() {
 	let div = document.createElement('div');
 	let rand = Math.floor(Math.random() * colors.length);    //Random variable for color picking
@@ -58,7 +62,13 @@ function updateScore() {
  		if(!gameOver && numberOfBalloonPop !== totalBalloonToBePoped) {
  			createBalloon();
  		} else if(num !== totalBalloonToBePoped){
- 			clearInterval(loop)
+ 			clearInterval(loop);
+ 			totalShadow.style.display = 'flex'; //in css we have done none 
+ 			looser.style.display = 'block';
+ 		}else{
+ 			clearInterval(loop);
+ 			totalShadow.style.display = 'flex';
+ 			winner.style.display = 'block';
  		}
  	} , 800);
  }
@@ -76,3 +86,7 @@ for (let i=0; i< balloons.length; i++) {									to overcome this , using event 
  		deleteBalloon(event.target);
  	}
  })
+
+
+/* To start th game */
+startGame()
