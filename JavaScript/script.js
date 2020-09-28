@@ -6,6 +6,7 @@ let widthOfBalloon = 100;
 let scores = document.querySelectorAll('.score');
 let numberOfBalloonPop = 0;
 let totalBalloonToBePoped = 100;
+let currentBalloon = 0;
 function createBalloon() {
 	let div = document.createElement('div');
 	let rand = Math.floor(Math.random() * colors.length);    //Random variable for color picking
@@ -13,6 +14,8 @@ function createBalloon() {
 	
 	rand = Math.floor(Math.random() * (windowWidth - 100));    //Added random number to obtain different position on screen
 	div.style.left = rand + 'px';							//Moving to left with specific pixel
+	div.dataset.number = currentBalloon; //dataset is the properyt to ssign number or object number is the name of variable therfore the name of the attribute become data-number
+	currentBalloon++;
 	document.body.appendChild(div);
 	animateBalloon(div);
 }
@@ -34,9 +37,11 @@ function animateBalloon(elem) {
 }
 
 function deleteBalloon(elem){
+	if(document.querySelector('[data-number=" '+elem.dataset.number+' "]' !== null)) {    //This function will only work when there is some number in data-number
 	elem.remove();
 	numberOfBalloonPop++;
 	updateScore();
+	}
 }
 
 /*To ccalculate the score */
