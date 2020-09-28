@@ -33,3 +33,17 @@ function animateBalloon(elem) {
 function deleteBalloon(elem){
 	elem.remove();
 }
+
+/*let balloons =document.querySelectorAll('.balloon');						/*this code is not working because event listener will not work for prdefined object on webpage.
+
+for (let i=0; i< balloons.length; i++) {									to overcome this , using event delegation .
+	balloons[i].addEventListener('click',function(){
+		deleteBalloon(balloons[i])
+	})
+}*/ 
+ /*Event deligation */
+ document.addEventListener('click',function(event){
+ 	if(event.target.classList.contains('balloon')){
+ 		deleteBalloon(event.target);
+ 	}
+ })
