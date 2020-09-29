@@ -55,7 +55,7 @@ body{
 	height: 200px;
    /* To flow ballon from bottom to top*/
 	position: absolute;
-	top: 100vh;         
+	top: 70vh;         
 	background-size: cover;      /* To adjust the size of image*/
 	background-position: center;
 	background-repeat: no-repeat;
@@ -80,7 +80,7 @@ body{
 	width: 100vw;
 	height: 100vh;
 	background: rbga(0,0,0,0.6);
-	display: none;
+	display: none;              /**/
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
@@ -115,12 +115,12 @@ body{
 	left: calc(50% - 150px); /* Mve block by 50% left -150px width center to bring it bottom center,*/
 }
 
-.start-game-window {
+/*.start-game-window {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-} 
+} */
 
