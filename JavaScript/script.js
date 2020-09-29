@@ -32,7 +32,7 @@ function animateBalloon(elem) {
 		if(pos >=(windowHeight + 200)){						// condition for function will stop at top
 			clearInterval(interval);
 			gameOver=true;
-			//deleteBalloon(elem);
+			deleteBalloon(elem);
 		}
 		else{
 			pos++;
@@ -43,7 +43,7 @@ function animateBalloon(elem) {
 }
 
 function deleteBalloon(elem){
-	if(document.querySelector('[data-number=" '+elem.dataset.number+' "]' !== null)) {    //This function will only work when there is some number in data-number
+	if(document.querySelector('[data-number=" '+elem.dataset.number+' "]') !== null) {    //This function will only work when there is some number in data-number
 	elem.remove();
 	numberOfBalloonPop++;
 	updateScore();
